@@ -6,6 +6,8 @@ class Master:
 
     # connect = pymssql.connect(server=connections["ServerName"],user=connections["user"],
     #                                 password=connections["password"],database=connections["database"])
+    def Connection(self,connect,connections[]):
+        pass
 
     def GetData(self):
         connections = {
