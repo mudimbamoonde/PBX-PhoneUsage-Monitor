@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1"> {% block head%} {% endblock %}
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
+    <title>Zambeef-Call Usage</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css" rel="stylesheet">
+    <link href="{{ url_for('static' , filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static' , filename='css/dataTables.min.css') }}" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static' , filename='css/dashboard.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    <p><br></p>
+    <main role="main" class="col-md-10" style="margin-left: 102px">
+        <h1 class="text-center text-danger">ZAMBEEF PRODUCTS PLC<br> PHONE USAGE MONITOR</h1>
+        <hr>
+        <br>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-3 bg-success">
+                        <a href="/novatek/" class="nav-item">
+                            <div class="card-body">
+                                <table>
+                                    <tr>
+                                        <th><img src="{{ url_for('static',filename='images/novatek.jpg') }}" width="85" height="102" class="img-thumbnail" /> </th>
+                                        <th>
+                                            <h1 class="card-title text-center text-white">NOVATEK</h1>
+                                        </th>
+                                    </tr>
+                                </table>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3 bg-danger">
+                        <div class="card-body">
+                            <table>
+                                <tr>
+                                    <th><img src="{{ url_for('static',filename='images/Zambeef.jpg') }}" width="85" height="102" class="img-thumbnail" /> </th>
+                                    <th>
+                                        <h1 class="card-title text-center text-white">HEAD OFFICE</h1>
+                                    </th>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3 bg-danger">
+                        <div class="card-body">
+                            <table>
+                                <tr>
+                                    <th><img src="{{ url_for('static',filename='images/huntley.jpg') }}" width="85" height="102" class="img-thumbnail" /> </th>
+                                    <th>
+                                        <h1 class="card-title text-center text-white">HUNTLEY</h1>
+                                    </th>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3 bg-danger">
+                        <div class="card-body">
+                            <table>
+                                <tr>
+                                    <th><img src="{{ url_for('static',filename='images/Master Pork.jpg') }}" width="85" height="102" class="img-thumbnail" /> </th>
+                                    <th>
+                                        <h1 class="card-title text-center text-white">MASTER PORK</h1>
+                                    </th>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card mb-3 bg-dark">
+                        <div class="card-body">
+                            <table>
+                                <tr>
+                                    <th><img src="{{ url_for('static',filename='images/Zamleather.jpg') }}" width="85" height="102" class="img-thumbnail" /> </th>
+                                    <th>
+                                        <h1 class="card-title text-center text-white">ZAMLEATHER</h1>
+                                    </th>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3 bg-warning">
+                        <div class="card-body">
+                            <table>
+                                <tr>
+                                    <th><img src="{{ url_for('static',filename='images/Zamchick.jpg') }}" width="85" height="102" class="img-thumbnail" /> </th>
+                                    <td>
+                                        <h1 class="card-title text-center text-white">ZAMHACTH</h1>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <style>
+            .card-body:hover {
+                cursor: pointer;
+                background: #EB5F56;
+            }
+            
+            body {
+                background: #fdfdfd;
+            }
+        </style>
+
+    </main>
+</body>
+
+</html>
