@@ -11,7 +11,7 @@
         </div>
     </div>
 
-     <div class="costCall"></div>
+    <div class="costCall"></div>
 
     <h2 class="text-info">Cost Management</h2>
     <div class="table-responsive">
@@ -29,7 +29,8 @@
             <tbody>
                 {% for x in list %}
                 <tr>
-                    <td>{{ x.Account_Code }}</td>
+                    <td>
+                        <a href='/cost/{{x.Account_Code }}'> {{ x.Account_Code }}</a></td>
                     <td>{{ x.Duration_Seconds }}</td>
                     <td class="bg bg-warning text-white">K {{ x.Cost_ZKW }}</td>
                     <td>{{ x.From_Date }}</td>

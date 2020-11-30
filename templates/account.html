@@ -1,0 +1,88 @@
+{% extends 'base.html' %} {% block head %}
+<title>Zambeef-Call Usage</title> {% endblock %} {% block body%}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+    <br>
+    <link href="{{ url_for('static',filename='css/twoTheme.css')}}" rel="stylesheet">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="content" class="content content-full-width">
+                    <!-- begin profile -->
+                    <div class="profile">
+                        <div class="profile-header">
+                            <!-- BEGIN profile-header-cover -->
+                            <div class="profile-header-cover"></div>
+                            <!-- END profile-header-cover -->
+                            <!-- BEGIN profile-header-content -->
+                            <div class="profile-header-content">
+                                <!-- BEGIN profile-header-img -->
+                                <div class="profile-header-img">
+                                    <img src="{{url_for('static', filename='images/novatek.jpg')}}" alt="">
+                                </div>
+                                {% for x in list %}
+                                <!-- END profile-header-img -->
+                                <!-- BEGIN profile-header-info -->
+                                <div class="profile-header-info">
+                                    <h4 class="m-t-10 m-b-5">{{ x.Account_Code }}</h4>
+                                    <p class="m-b-10">{{ x.Duration_Seconds}} Seconds </p>
+                                    <p class="m-b-10">{{ x.From_Date }} </p>
+
+                                </div>
+                                <!-- END profile-header-info -->
+                            </div>
+                            <!-- END profile-header-content -->
+                            <!-- BEGIN profile-header-tab -->
+
+                            <!-- END profile-header-tab -->
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- end profile -->
+                    <!-- begin profile-content -->
+                    <div class="profile-content">
+                        <!-- begin tab-content -->
+                        <div class="tab-content p-0">
+                            <!-- begin #profile-friends tab -->
+                            <div class="tab-pane fade in active show" id="profile-friends">
+                                <h4 class="m-t-0 m-b-20"> Calls Made</h4>
+                                <!-- begin row -->
+                                <table class="table table-striped table-bordered table-sm" id="fillUp">
+                                    <thead class="bg-success text-white">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Caller ID</th>
+                                            <th>Destination</th>
+                                            <th>Call Started</th>
+                                            <th>Account Code</th>
+                                            <th>Duration Seconds</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for x in other %}
+                                        <tr>
+                                            <td>{{ x.ID }}</td>
+                                            <td>{{ x.Caller_ID }}</td>
+                                            <td>{{ x.Destination }}</td>
+                                            <td>{{ x.Call_Start }}</td>
+                                            <td>{{ x.Account_Code }}</td>
+                                            <td>{{ x.Duration_Seconds }} Seconds</td>
+                                            <td>{{ x.Disposition }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                <!-- end row -->
+                            </div>
+                            <!-- end #profile-friends tab -->
+                        </div>
+                        <!-- end tab-content -->
+                    </div>
+                    <!-- end profile-content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+{% endblock %}

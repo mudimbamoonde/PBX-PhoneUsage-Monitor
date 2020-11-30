@@ -11,9 +11,10 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
 
     <!-- Bootstrap core CSS -->
- <link href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css" rel="stylesheet">
     <link href="{{ url_for('static' , filename='css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static' , filename='css/dataTables.min.css') }}" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
 
     <style>
@@ -56,13 +57,19 @@
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="sidebar-sticky pt-3">
                     <ul class="nav flex-column">
+                        {% if "/novatek/" in request.url_rule.rule %}
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/novatek/">
+                                <span data-feather="home"></span> Dashboard <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        {% else %}
                         <li class="nav-item ">
                             <a class="nav-link" href="/novatek/">
                                 <span data-feather="home"></span> Dashboard <span class="sr-only">(current)</span>
                             </a>
                         </li>
-
-                        {% if "/cost/" in request.url_rule.rule %}
+                        {% endif %} {% if "/cost/" in request.url_rule.rule %}
                         <li class="nav-item">
                             <a class="nav-link active" href="/cost/">
                                 <span data-feather="file"></span> Cost
@@ -74,44 +81,23 @@
                                 <span data-feather="file"></span> Cost
                             </a>
                         </li>{% endif %}
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="shopping-cart"></span> Products
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="users"></span> Customers
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="bar-chart-2"></span> Reports
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="layers"></span> Integrations
-                            </a>
-                        </li>
                     </ul>
 
                     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Saved reports</span>
+                        <span>Account Codes</span>
                         <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
                             <span data-feather="plus-circle"></span>
                         </a>
                     </h6>
                     <ul class="nav flex-column mb-2">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span> Current month
+                            <a class="nav-link" href="/addAccount">
+                                <span data-feather="file-text"></span> Add Account Code
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span> Last quarter
+                                <span data-feather="file-text"></span>View Account Code
                             </a>
                         </li>
                         <li class="nav-item">
@@ -132,35 +118,37 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-{#    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>#}
-{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>#}
+    {#
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>#} {#
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>#}
     <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-{#    <script src="https://cdnjs.com/libraries/Chart.js"></script>#}
+    {#
+    <script src="https://cdnjs.com/libraries/Chart.js"></script>#}
 
- <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-{#    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>#}
+    {#
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>#}
     <script src="{{ url_for('static', filename='js/dataTables.min.js') }}"></script>
 
     <script>
         $("#fillUp").dataTable();
         /* globals Chart:false, feather:false */
-       let  getData = $.get("/CostTaken/");
+        let getData = $.get("/CostTaken/");
 
-           getData.done(function (data){
-               var obj = jQuery.parseJSON(data.results)
-               console.log(obj);
-             new Chartist.Bar(".costCall", {
-                  labels: [],
-                  series: [
+        getData.done(function(data) {
+            var obj = jQuery.parseJSON(data.results)
+            console.log(obj);
+            new Chartist.Bar(".costCall", {
+                labels: [],
+                series: [
                     data.results
-                  ]
-                }, {
-                  low: 0,
-                  showArea: true
-                });
-    });
-
+                ]
+            }, {
+                low: 0,
+                showArea: true
+            });
+        });
     </script>
 </body>
 

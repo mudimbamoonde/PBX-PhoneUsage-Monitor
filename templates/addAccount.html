@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {% block head %}
+<title>Zambeef-Call Usage</title> {% endblock %} {% block body%}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+
+    <p><br></p>
+
+    <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
+
+    <h3 class="text-success">
+        <b>Account Code Registration</b></h3>
+    <hr>
+    <div class="card">
+        <div class="card-header bg-success">
+
+        </div>
+        <div class="card-body">
+            <form action="/saveAccount" method="POST">
+                <div class="row">
+                    <div class="col-md-5">
+                        <label>Account Code</label>
+                        <input type="text" name="accountCode" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <label>First Name</label>
+                        <input type="text" name="fname" class="form-control" />
+                    </div>
+
+                    <div class="col-md-5">
+                        <label>Last Name</label>
+                        <input type="text" name="lname" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <label>Location</label>
+                        <input type="text" name="location" class="form-control" />
+                    </div>
+
+                    <div class="col-md-5">
+                        <label>Department</label>
+                        <input type="text" name="dpt" class="form-control" />
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-5">
+                        <p><br></p>
+                        <button type="submit" name="submit" class="btn btn-lg btn-danger">Add</button>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+
+</main>
+{% endblock%}
