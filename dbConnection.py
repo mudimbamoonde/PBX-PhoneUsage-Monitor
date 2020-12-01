@@ -20,7 +20,7 @@ class Master:
                                   password=connections["password"], database=connections["database"])
         # print(connections["ServerName"])
         cursor = connect.cursor()
-        cursor.execute("SELECT TOP 100 * FROM calls ")
+        cursor.execute("SELECT *FROM calls ")
         row = cursor.fetchone()
         filledRow = {}
         container = []
@@ -125,7 +125,7 @@ class Master:
         connect = pymssql.connect(server=connections["ServerName"], user=connections["user"],
                                   password=connections["password"], database=connections["database"])
 
-        query = """ SELECT TOP (100) PERCENT Account_Code, SUM(Duration_Seconds) AS
+        query = """ SELECT TOP 100 PERCENT Account_Code, SUM(Duration_Seconds) AS
                         Duration_Seconds, SUM(CAST(Duration_Seconds AS 
                         decimal(10, 2))) / 60 * 10 AS Cost_ZKW, 
                         MIN(Call_Start) AS From_Date, MAX(Call_Start) 
@@ -165,7 +165,7 @@ class Master:
             connect = pymssql.connect(server=connections["ServerName"], user=connections["user"],
                                     password=connections["password"], database=connections["database"])
 
-            query = """ SELECT TOP 200 *FROM calls WHERE Account_Code='{}'""".format(accountName)
+            query = """ SELECT  *FROM calls WHERE Account_Code='{}'""".format(accountName)
             cursor = connect.cursor()
             cursor.execute(query)
             row = cursor.fetchone()
@@ -191,6 +191,77 @@ class Master:
                 # print(Signal)
                 # print(container)
             return container
+
+    def InsertCode(self,accountName,fname,lname,location,dpt,date):
+                connections = {
+                    "ServerName": "192.168.0.245\KAS",
+                    "user": "app_svc",
+                    "password": "XgHb][d8F'",
+                    "database": "call_accounts"
+                }
+
+                connect = pymssql.connect(server=connections["ServerName"], user=connections["user"],
+                                        password=connections["password"], database=connections["database"])
+
+                query = """INSERT INTO staff (Account_Code,Firstname,
+                Surname,Location,Department,Date_Record_Created) VALUES('{}','{}','{}','{}','{}','{}') """.format(accountName,fname,lname,location,dpt,date)
+                cursor = connect.cursor()
+                cursor.execute(query)
+                connect.commit()
+                connect.close()
+            
+    def QueryCodes(self):
+            connections = {
+                "ServerName": "192.168.0.245\KAS",
+                "user": "app_svc",
+                "password": "XgHb][d8F'",
+                "database": "call_accounts"
+                    }
+            connect = pymssql.connect(server=connections["ServerName"], user=connections["user"],
+                                            password=connections["password"], database=connections["database"])
+
+            query = """ SELECT TOP 200 *FROM staff """
+            cursor = connect.cursor()
+            cursor.execute(query)
+            row = cursor.fetchone()
+            filledRow = {}
+            container = []
+            # filledRow.sort()
+        
+            while row:
+                # print(str(row[0]), str(row[1]),str(row[2]),str(row[3]),str(row[4]),str(row[5]),str(row[6]))
+                filledRow = {
+                        "ID": str(row[0]),
+                        "Account_Code": str(row[1]),
+                        "FirstName": str(row[2]),
+                        "LastName": str(row[3]),
+                        "Location": str(row[4]),
+                        "Department": str(row[5]),
+                        "Date_Record_Created": str(row[6]),
+                    }
+                container.append(filledRow)
+
+                row = cursor.fetchone()
+
+                # print(Signal)
+                # print(container)
+            return container
+
+
+    def DeleteUser(self,id):
+        connections = {
+                    "ServerName": "192.168.0.245\KAS",
+                    "user": "app_svc",
+                    "password": "XgHb][d8F'",
+                    "database": "call_accounts"
+                }
+        connect = pymssql.connect(server=connections["ServerName"], user=connections["user"],
+        password=connections["password"], database=connections["database"])
+        query = """DELETE FROM staff WHERE ID='{}'""".format(id)
+        cursor = connect.cursor()
+        cursor.execute(query)
+        connect.commit()
+        connect.close()
 
 # tape = Master()
 # data = tape.AccontCode('870')

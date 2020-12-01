@@ -3,7 +3,7 @@ from random import sample
 from dbConnection import Master
 import json
 import pymssql
-import datetime
+from datetime import date
 
 app = Flask(__name__)
 
@@ -54,7 +54,38 @@ def addAccounts():
 
 @app.route("/saveAccount",methods=['GET','POST'])
 def saveAccounts():
-    return redirect("/")
+    if request.method == "POST":
+        accountCode = request.form["accountCode"]
+        fname = request.form["fname"]
+        lname = request.form["lname"]
+        location = request.form["location"]
+        dpt = request.form["dpt"]
+        try:
+            insert = Master()
+            insert.InsertCode(accountCode,fname,lname,location,dpt,date.today())
+            return redirect("/novatek/")
+        except Exception as e:
+            raise "Failed to Submit: "+ str(e)
+
+@app.route("/viewAccountCode")
+def viewAccountCode():
+    query = Master()
+    codes = query.QueryCodes()
+    return render_template("viewAccount.html", code = codes)
+
+
+@app.route("/deleteUser/<id>")
+def deleteStaff(id):
+    try:
+        delete = Master()
+        delete.DeleteUser(id)
+        return redirect("/viewAccountCode")
+    except Exception as e:
+        raise "Failed to Delete: "+ str(e)
+   
+        
+
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
