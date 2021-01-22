@@ -26,7 +26,7 @@
             -ms-user-select: none;
             user-select: none;
         }
-        
+
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
@@ -143,7 +143,9 @@
     <script src="{{ url_for('static', filename='js/dataTables.min.js') }}"></script>
 
     <script>
-        $("#fillUp").dataTable();
+        $("#fillUp").dataTable({
+            "order": [[3, "desc"]]
+        });
         /* globals Chart:false, feather:false */
         let getData = $.get("/CostTaken/");
 

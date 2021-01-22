@@ -20,7 +20,11 @@ class Master:
                                   password=connections["password"], database=connections["database"])
         # print(connections["ServerName"])
         cursor = connect.cursor()
-        cursor.execute("SELECT *FROM calls ")
+        sqlQ = """ 
+         SELECT TOP (1000) *FROM calls ORDER BY Call_Start DESC
+        """
+        # cursor.execute("SELECT TOP (6) FROM calls WITH (INDEX(ColumnIndex))")
+        cursor.execute(sqlQ)
         row = cursor.fetchone()
         filledRow = {}
         container = []
@@ -38,11 +42,12 @@ class Master:
             }
 
             container.append(filledRow)
+            
 
             row = cursor.fetchone()
-            Signal = json.dumps(filledRow)
-            cover = json.loads(Signal)
-            # print(Signal)
+            # Signal = json.dumps(filledRow)
+            # cover = json.loads(Signal)
+            # print(container)
         return container
 
     def CalculateCost(self):
@@ -55,8 +60,9 @@ class Master:
         connect = pymssql.connect(server=connections["ServerName"], user=connections["user"],
                                   password=connections["password"], database=connections["database"])
 
-        query = """ SELECT TOP (100) PERCENT Account_Code, SUM(Duration_Seconds) AS
-         Duration_Seconds, SUM(CAST(Duration_Seconds AS decimal(10, 2))) / 60 * 10 AS Cost_ZKW, 
+        query = """ SELECT Account_Code, SUM(Duration_Seconds) AS
+         Duration_Seconds, SUM(CA
+         ST(Duration_Seconds AS decimal(10, 2))) / 60 * 10 AS Cost_ZKW, 
          MIN(Call_Start) AS From_Date, MAX(Call_Start) 
         AS ToDate FROM calls GROUP BY Account_Code ORDER BY Account_Code """
         cursor = connect.cursor()
