@@ -21,7 +21,7 @@ class Master:
         # print(connections["ServerName"])
         cursor = connect.cursor()
         sqlQ = """ 
-         SELECT TOP (1000) *FROM calls ORDER BY Call_Start DESC
+         SELECT TOP (500) *FROM calls ORDER BY Call_Start DESC
         """
         # cursor.execute("SELECT TOP (6) FROM calls WITH (INDEX(ColumnIndex))")
         cursor.execute(sqlQ)
@@ -99,7 +99,7 @@ class Master:
         connect = pymssql.connect(server=connections["ServerName"], user=connections["user"],
                                   password=connections["password"], database=connections["database"])
 
-        query = """ SELECT TOP (100) PERCENT Account_Code, SUM(Duration_Seconds) AS
+        query = """ SELECT TOP (100)  Account_Code, SUM(Duration_Seconds) AS
                 Duration_Seconds, SUM(CAST(Duration_Seconds AS decimal(10, 2))) / 60 * 10 AS Cost_ZKW, 
                 MIN(Call_Start) AS From_Date, MAX(Call_Start) 
                AS ToDate FROM calls GROUP BY Account_Code ORDER BY Account_Code """
@@ -131,7 +131,7 @@ class Master:
         connect = pymssql.connect(server=connections["ServerName"], user=connections["user"],
                                   password=connections["password"], database=connections["database"])
 
-        query = """ SELECT TOP 100 PERCENT Account_Code, SUM(Duration_Seconds) AS
+        query = """ SELECT TOP 100  Account_Code, SUM(Duration_Seconds) AS
                         Duration_Seconds, SUM(CAST(Duration_Seconds AS 
                         decimal(10, 2))) / 60 * 10 AS Cost_ZKW, 
                         MIN(Call_Start) AS From_Date, MAX(Call_Start) 
@@ -171,7 +171,7 @@ class Master:
             connect = pymssql.connect(server=connections["ServerName"], user=connections["user"],
                                     password=connections["password"], database=connections["database"])
 
-            query = """ SELECT  *FROM calls WHERE Account_Code='{}'""".format(accountName)
+            query = """ SELECT*FROM calls WHERE Account_Code='{}'""".format(accountName)
             cursor = connect.cursor()
             cursor.execute(query)
             row = cursor.fetchone()
