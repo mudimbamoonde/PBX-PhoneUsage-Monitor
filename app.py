@@ -26,7 +26,7 @@ def novatek():
 
 
 @app.route("/novatek/allCalls/")
-def novatek():
+def allCalls():
     view = Master()
     data = view.GetData()
     # data = {}
