@@ -20,7 +20,7 @@ class Master:
                                   password=connections["password"], database=connections["database"])
         # print(connections["ServerName"])
         cursor = connect.cursor()
-        cursor.execute("SELECT TOP(500) *FROM calls ORDER BY Call_Start DESC")
+        cursor.execute("SELECT*FROM calls ORDER BY Call_Start DESC")
         row = cursor.fetchone()
         filledRow = {}
         container = []
