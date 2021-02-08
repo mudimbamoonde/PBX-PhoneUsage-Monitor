@@ -29,11 +29,6 @@ def novatek():
 def allCalls():
     view = Master()
     data = view.GetData()
-    # data = {}
-    # while True:
-    #     data = view.GetData()
-    # return render_template("index.html")
-    # print(data)
     return render_template("allCalls.html", list=data)
 
 
