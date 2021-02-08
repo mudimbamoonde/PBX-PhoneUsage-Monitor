@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block head %}
+<title>Zambeef-Call Usage</title> {% endblock %} {% block body%}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+
+    <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
+
+    <p><br></p>
+    <p><br></p>
+    <h2>Phone Usage</h2>
+    <div class="table-responsive">
+        {{rule }}
+        <table class="table table-striped table-bordered table-sm" id="fillUp">
+            <thead class="bg-success text-white">
+                <tr>
+                    <th>#</th>
+                    <th>Caller ID</th>
+                    <th>Destination</th>
+                    <th>Call Started</th>
+                    <th>Account Code</th>
+                    <th>Duration Seconds</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in list %}
+                <tr>
+
+                    <td>{{ x.ID }}</td>
+                    <td>{{ x.Caller_ID }}</td>
+                    <td>{{ x.Destination }}</td>
+                    <td>{{ x.Call_Start }}</td>
+                    <td>
+                        <a href="/novatek/cost/{{x.Account_Code }}">{{ x.Account_Code }}</a></td>
+                    <td>{{ x.Duration_Seconds }} Seconds</td>
+                    <td>{{ x.Disposition }}</td>
+                    {% endif %}
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</main>
+{% endblock%}

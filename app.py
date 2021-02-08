@@ -25,6 +25,18 @@ def novatek():
     return render_template("index.html", list=data)
 
 
+@app.route("/novatek/allCalls/")
+def novatek():
+    view = Master()
+    data = view.GetData()
+    # data = {}
+    # while True:
+    #     data = view.GetData()
+    # return render_template("index.html")
+    # print(data)
+    return render_template("allCalls.html", list=data)
+
+
 @app.route("/novatek/cost/<accountCode>")
 def accountView(accountCode):
       view = Master()
