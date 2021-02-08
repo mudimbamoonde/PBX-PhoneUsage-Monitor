@@ -1,5 +1,7 @@
-import matplotlib.pyplot as myplt
-myplt.plot([2,4,6,8] , [1,2,3,4])
-myplt.xlabel('time in mins')
-myplt.ylabel('distance in Kilo meters')
-myplt.show()
+import requests
+from requests_ntlm import HttpNtlmAuth
+
+uname = "ZAMBEEF\moondem"
+pword ="S@muel9judah"
+res=requests.get("https://portal.zambeef.co.zm:4433/sites/intranet",auth=HttpNtlmAuth(uname,pword))
+print(res)
