@@ -28,7 +28,8 @@
                                         <!-- BEGIN profile-header-info -->
                                         <div class="profile-header-info">
                                             <h4 class="m-t-10 m-b-5">{{ x.Account_Code }}</h4>
-                                            <p class="m-b-10">{{ x.Duration_Seconds}} Seconds </p>
+                                            <p class="m-b-10">{{ x.Duration_Seconds}} Seconds
+                                                <br>ZMW {{ x.Cost_ZKW}} </p>
                                             <p class="m-b-10">{{ x.From_Date}} </p>
 
                                         </div>
@@ -56,9 +57,10 @@
                                                 <tr>
                                                     <th>#</th>
                                                     <th>Caller ID</th>
-                                                    <th>Call Started</th>
+                                                    <th>Destination</th>
                                                     <th>Account Code</th>
                                                     <th>Duration Seconds</th>
+                                                    <th>Call Started</th>
                                                     <th>Status</th>
                                                 </tr>
                                             </thead>
@@ -67,9 +69,10 @@
                                                 <tr>
                                                     <td>{{ x.ID }}</td>
                                                     <td>{{ x.Caller_ID }}</td>
-                                                    <td>{{ x.Call_Start }}</td>
-                                                    <td>{{ x.Account_Code }}</td>
+                                                    <td>{{ x.Destination }}</td>
+                                                    <td class="btn btn-sm btn-warning">{{ x.Account_Code }}</td>
                                                     <td>{{ x.Duration_Seconds }} Seconds</td>
+                                                    <td>{{ x.Call_Start }}</td>
                                                     <td>{{ x.Disposition }}</td>
                                                 </tr>
                                                 {% endfor %}

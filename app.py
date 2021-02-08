@@ -24,7 +24,7 @@ def novatek():
     return render_template("index.html", list=data)
 
 
-@app.route("/cost/<accountCode>")
+@app.route("/novatek/cost/<accountCode>")
 def accountView(accountCode):
       view = Master()
       data = view.AccontCode(accountCode)
@@ -32,14 +32,14 @@ def accountView(accountCode):
     #   print(data)
       return render_template("account.html",list = data,other=other )
 
-@app.route("/cost/")
+@app.route("/novatek/cost/")
 def cost():
     view = Master()
     data = view.CalculateCost()
     return render_template("Cost.html", list=data)
 
 
-@app.route("/CostTaken/")
+@app.route("/novatek//CostTaken/")
 def costTaken():
     view = Master()
     data = view.ChartDisplay()
@@ -48,11 +48,11 @@ def costTaken():
 
 
 # Account Codes
-@app.route("/addAccount")
+@app.route("/novatek/addAccount")
 def addAccounts():
     return render_template("addAccount.html")
 
-@app.route("/saveAccount",methods=['GET','POST'])
+@app.route("/novatek/saveAccount",methods=['GET','POST'])
 def saveAccounts():
     if request.method == "POST":
         accountCode = request.form["accountCode"]
@@ -67,14 +67,14 @@ def saveAccounts():
         except Exception as e:
             raise "Failed to Submit: "+ str(e)
 
-@app.route("/viewAccountCode")
+@app.route("/novatek/viewAccountCode")
 def viewAccountCode():
     query = Master()
     codes = query.QueryCodes()
     return render_template("viewAccount.html", code = codes)
 
 
-@app.route("/deleteUser/<id>")
+@app.route("/novatek/deleteUser/<id>")
 def deleteStaff(id):
     try:
         delete = Master()
@@ -89,3 +89,4 @@ def deleteStaff(id):
 
 if __name__ == "__main__":
     app.run(debug=False,host='192.168.0.247',port='1050')
+    # app.run(debug=True)

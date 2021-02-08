@@ -26,7 +26,7 @@
             -ms-user-select: none;
             user-select: none;
         }
-
+        
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
@@ -69,15 +69,15 @@
                                 <span data-feather="home"></span> Dashboard <span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        {% endif %} {% if "/cost/" in request.url_rule.rule %}
+                        {% endif %} {% if "/novatek/cost/" in request.url_rule.rule %}
                         <li class="nav-item">
-                            <a class="nav-link active" href="/cost/">
+                            <a class="nav-link active" href="/novatek/cost/">
                                 <span data-feather="file"></span> Cost
                             </a>
                         </li>
                         {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="/cost/">
+                            <a class="nav-link" href="/novatek/cost/">
                                 <span data-feather="file"></span> Cost
                             </a>
                         </li>{% endif %}
@@ -94,26 +94,26 @@
                     <ul class="nav flex-column mb-2">
                         {% if "/addAccount" in request.url_rule.rule %}
                         <li class="nav-item">
-                            <a class="nav-link active" href="/addAccount">
+                            <a class="nav-link active" href="/novatek/addAccount">
                                 <span data-feather="file-text"></span> Add Account Code
                             </a>
                         </li>
                         {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="/addAccount">
+                            <a class="nav-link" href="/novatek/addAccount">
                                 <span data-feather="file-text"></span> Add Account Code
                             </a>
                         </li>
-                        {% endif %} {% if "/viewAccountCode" in request.url_rule.rule %}
+                        {% endif %} {% if "/novatek/viewAccountCode" in request.url_rule.rule %}
                         <li class="nav-item">
-                            <a class="nav-link active" href="/viewAccountCode">
+                            <a class="nav-link active" href="/novatek/viewAccountCode">
                                 <span data-feather="file-text"></span>View Account Code
                             </a>
                         </li>
                         {% else %}
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/viewAccountCode">
+                            <a class="nav-link" href="/novatek/viewAccountCode">
                                 <span data-feather="file-text"></span>View Account Code
                             </a>
                         </li>
@@ -144,7 +144,9 @@
 
     <script>
         $("#fillUp").dataTable({
-            "order": [[3, "desc"]]
+            "order": [
+                [3, "desc"]
+            ]
         });
         /* globals Chart:false, feather:false */
         let getData = $.get("/CostTaken/");

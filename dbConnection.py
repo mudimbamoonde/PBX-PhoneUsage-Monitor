@@ -20,7 +20,7 @@ class Master:
                                   password=connections["password"], database=connections["database"])
         # print(connections["ServerName"])
         cursor = connect.cursor()
-        cursor.execute("SELECT TOP(200) *FROM calls ORDER BY Call_Start DESC")
+        cursor.execute("SELECT TOP(500) *FROM calls ORDER BY Call_Start DESC")
         row = cursor.fetchone()
         filledRow = {}
         container = []
@@ -57,8 +57,7 @@ class Master:
                                   password=connections["password"], database=connections["database"])
 
         query = """ SELECT Account_Code, SUM(Duration_Seconds) AS
-         Duration_Seconds, SUM(CA
-         ST(Duration_Seconds AS decimal(10, 2))) / 60 * 10 AS Cost_ZKW, 
+         Duration_Seconds, SUM(CAST(Duration_Seconds AS decimal(10, 2))) / 60 * 10 AS Cost_ZKW, 
          MIN(Call_Start) AS From_Date, MAX(Call_Start) 
         AS ToDate FROM calls GROUP BY Account_Code ORDER BY Account_Code """
         cursor = connect.cursor()

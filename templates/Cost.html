@@ -32,7 +32,11 @@
                     <td>
                         <a href='/cost/{{x.Account_Code }}'> {{ x.Account_Code }}</a></td>
                     <td>{{ x.Duration_Seconds }}</td>
-                    <td class="bg bg-warning text-white">K {{ x.Cost_ZKW }}</td>
+                    {% if x.Cost_ZKW|int > 500 %}
+                    <td class="bg bg-danger text-white">K {{ x.Cost_ZKW }}</td>
+                    {% else %}
+                    <td class="bg bg-success text-white">K {{ x.Cost_ZKW }}</td>
+                    {% endif %}
                     <td>{{ x.From_Date }}</td>
                     <td>{{ x.ToDate }}</td>
                 </tr>
