@@ -27,7 +27,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for x in list %}
+                {% for x in list %} {% if x.Account_Code|int > 0 %}
                 <tr>
                     <td>
                         <a href='/novatek/cost/{{x.Account_Code }}'> {{ x.Account_Code }}</a></td>
@@ -40,7 +40,7 @@
                     <td>{{ x.From_Date }}</td>
                     <td>{{ x.ToDate }}</td>
                 </tr>
-                {% endfor %}
+                {% endif %} {% endfor %}
             </tbody>
         </table>
     </div>
