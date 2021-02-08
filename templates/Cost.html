@@ -30,7 +30,7 @@
                 {% for x in list %}
                 <tr>
                     <td>
-                        <a href='/cost/{{x.Account_Code }}'> {{ x.Account_Code }}</a></td>
+                        <a href='/novatek/cost/{{x.Account_Code }}'> {{ x.Account_Code }}</a></td>
                     <td>{{ x.Duration_Seconds }}</td>
                     {% if x.Cost_ZKW|int > 500 %}
                     <td class="bg bg-danger text-white">K {{ x.Cost_ZKW }}</td>
