@@ -96,5 +96,5 @@ def deleteStaff(id):
     
 
 if __name__ == "__main__":
-    app.run(debug=False,host='192.168.0.247',port='5050')
-    # app.run(debug=True)
+    # app.run(debug=False,host='192.168.0.247',port='5050')
+    app.run(debug=True)

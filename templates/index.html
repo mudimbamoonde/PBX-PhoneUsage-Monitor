@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block head %}
-<title>Zambeef-Call Usage</title> {% endblock %} {% block body%}
+<title>Novatek-Call Usage</title> {% endblock %} {% block body%}
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 
     <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
@@ -22,20 +22,19 @@
                 </tr>
             </thead>
             <tbody>
-                {% for x in list %}
+                {% for x in list %} {% if x.Account_Code|int > 0 %}
                 <tr>
-                    {% if x.Account_Code|int > 0 %}
+
                     <td>{{ x.ID }}</td>
                     <td>{{ x.Caller_ID }}</td>
                     <td>{{ x.Destination }}</td>
                     <td>{{ x.Call_Start }}</td>
-                    <td>
-                        <a href="/novatek/cost/{{x.Account_Code }}">{{ x.Account_Code }}</a></td>
+                    <td><a href="/novatek/cost/{{x.Account_Code }}">{{ x.Account_Code }}</a></td>
                     <td>{{ x.Duration_Seconds }} Seconds</td>
                     <td>{{ x.Disposition }}</td>
-                    {% endif %}
+
                 </tr>
-                {% endfor %}
+                {% endif %} {% endfor %}
             </tbody>
         </table>
     </div>

@@ -1,12 +1,10 @@
 {% extends 'base.html' %} {% block head %}
-<title>Zambeef-Call Usage</title> {% endblock %} {% block body%}
+<title>Novatek-Call Usage</title> {% endblock %} {% block body%}
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 
     <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
-
     <p><br></p>
-    <p><br></p>
-    <h2>Phone Usage</h2>
+    <h2>All Internal Calls</h2>
     <div class="table-responsive">
         {{rule }}
         <table class="table table-striped table-bordered table-sm" id="fillUp">
@@ -30,9 +28,9 @@
                     <td>{{ x.Call_Start }}</td>
                     <td>{{ x.Duration_Seconds }} Seconds</td>
                     <td>{{ x.Disposition }}</td>
-                    {% endif %}
-                </tr>
 
+                </tr>
+                {% endfor%}
             </tbody>
         </table>
     </div>
